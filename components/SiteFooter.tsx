@@ -11,12 +11,7 @@ export default function SiteFooter() {
           src="/images/jeju-logo.png"
           alt="제주특별자치도"
         />
-        <span className={styles.footerTextGroup}>
-          <span className={styles.footerName}>해양수산연구원</span>
-          <span className={styles.footerSub}>
-            Jeju Fisheries and Marine Research Institute
-          </span>
-        </span>
+        <span className={styles.footerName}>해양수산연구원</span>
       </div>
     </footer>
   );

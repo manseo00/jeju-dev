@@ -48,6 +48,62 @@
   );
 }
 
+/* 하단 기관형 푸터: 상단 배너와 어울리는 네이비 */
+.footer {
+  flex-shrink: 0;
+  width: 100%;
+  background-image: linear-gradient(
+    180deg,
+    rgba(7, 31, 63, 0.96) 0%,
+    rgba(5, 22, 48, 0.98) 100%
+  );
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 -10px 28px rgba(8, 35, 70, 0.12);
+  color: #eaf6ff;
+  padding: 18px 16px;
+  padding-bottom: calc(18px + env(safe-area-inset-bottom));
+}
+
+.footerInner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  max-width: 480px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footerLogo {
+  display: block;
+  height: 32px;
+  width: auto;
+  max-width: 160px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.footerTextGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.5;
+}
+
+.footerName {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+
+.footerSub {
+  font-size: 11px;
+  color: rgba(234, 246, 255, 0.72);
+}
+
 /* PC 에서는 배너를 와이드 배너처럼 더 높게 */
 @media (min-width: 768px) {
   .headerImage {

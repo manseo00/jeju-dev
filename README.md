@@ -134,6 +134,14 @@ https://<your-domain>.vercel.app/A7K29P0XQ1
 - `globals.css` 에 `-webkit-text-size-adjust: 100%`, `box-sizing: border-box`,
   `overflow-x: hidden` 및 safe-area 패딩을 적용했습니다.
 
+## 공통 레이아웃 (헤더 / 푸터)
+
+- 모든 페이지 **상단**에는 `해녀 안전 AX 시스템` 배너 이미지가 표시됩니다.
+  (`public/images/haenyeo-ax-header.png`)
+- 모든 페이지 **하단**에는 제주특별자치도 로고와 `해양수산연구원` 텍스트로 구성된
+  기관형 푸터가 표시됩니다. (`public/images/jeju-logo.png`)
+- 헤더/푸터는 `app/layout.tsx` 에서 `SiteHeader` / `SiteFooter` 공통 컴포넌트로 처리합니다.
+
 ## 폴더 구조
 
 ```
@@ -152,6 +160,7 @@ app/
       page.tsx               # 레거시 호환: /device/[deviceNumber] -> /[deviceNumber] redirect
 components/
   SiteHeader.tsx   # 상단 배너
+  SiteFooter.tsx   # 하단 기관 푸터 (제주특별자치도 로고 + 해양수산연구원)
   site-layout.module.css
 lib/
   prisma.ts      # PrismaClient 싱글톤

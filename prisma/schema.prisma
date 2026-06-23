@@ -1,0 +1,20 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Device {
+  id                 Int      @id @default(autoincrement())
+  deviceNumber       String   @unique @map("device_number")
+  fishingVillageName String   @map("fishing_village_name")
+  registrantName     String   @map("registrant_name")
+  registrationDate   DateTime @map("registration_date")
+  createdAt          DateTime @default(now()) @map("created_at")
+  updatedAt          DateTime @updatedAt @map("updated_at")
+
+  @@map("devices")
+}

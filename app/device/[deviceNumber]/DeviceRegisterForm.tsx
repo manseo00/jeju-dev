@@ -24,7 +24,7 @@ export default function DeviceRegisterForm({
   const [state, formAction] = useActionState(registerDevice, initialState);
 
   return (
-    <main className={styles.page}>
+    <div className={styles.page}>
       <div className={styles.card}>
         <h1 className={styles.title}>디바이스 등록</h1>
 
@@ -74,6 +74,6 @@ export default function DeviceRegisterForm({
           <SubmitButton />
         </form>
       </div>
-    </main>
+    </div>
   );
 }

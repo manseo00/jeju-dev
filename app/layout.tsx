@@ -1,5 +1,8 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
+import SiteHeader from '@/components/SiteHeader';
+import SiteFooter from '@/components/SiteFooter';
+import shell from '@/components/site-layout.module.css';
 
 export const metadata: Metadata = {
   title: '디바이스 등록',
@@ -19,7 +22,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <body>{children}</body>
+      <body>
+        <div className={shell.appShell}>
+          <SiteHeader />
+          <main className={shell.main}>{children}</main>
+          <SiteFooter />
+        </div>
+      </body>
     </html>
   );
 }

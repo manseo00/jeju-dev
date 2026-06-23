@@ -1,0 +1,90 @@
+/* 전체 페이지 세로 골격: 헤더 - 콘텐츠 - 푸터 */
+.appShell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* fallback */
+  min-height: 100dvh;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* 본문 영역: 남는 공간을 채워 푸터를 화면 하단으로 밀어준다 */
+.main {
+  flex: 1;
+  width: 100%;
+}
+
+/* 상단 배너 이미지 (전체 너비, 라운드 없음) */
+.header {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  overflow: hidden;
+  background-color: #0e2b52;
+}
+
+.headerImage {
+  display: block;
+  width: 100%;
+  height: clamp(92px, 28vw, 140px);
+  object-fit: cover;
+  object-position: center center;
+}
+
+/* 배너와 본문 배경을 자연스럽게 잇는 은은한 그라데이션 그림자 */
+.headerFade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 24px;
+  pointer-events: none;
+  background-image: linear-gradient(
+    180deg,
+    rgba(14, 43, 82, 0) 0%,
+    rgba(14, 43, 82, 0.18) 100%
+  );
+}
+
+/* 하단 푸터: 본문과 연결되는 짙은 네이비 */
+.footer {
+  flex-shrink: 0;
+  width: 100%;
+  background-color: #0e2b52;
+  background-image: linear-gradient(180deg, #123763 0%, #0c2549 100%);
+  box-shadow: 0 -6px 18px rgba(12, 37, 73, 0.18);
+  padding: 18px 16px;
+  padding-bottom: calc(18px + env(safe-area-inset-bottom));
+}
+
+.footerText {
+  margin: 0;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #cfe0f4;
+}
+
+.footerLine {
+  display: block;
+}
+
+/* 라벨(담당/개발·제작)은 살짝 흐리게 */
+.footerLabel {
+  color: #8fb0d6;
+}
+
+/* 기관/회사명은 더 선명하게 */
+.footerName {
+  color: #f1f7ff;
+  font-weight: 600;
+}
+
+/* PC 에서는 배너를 와이드 배너처럼 더 높게 */
+@media (min-width: 768px) {
+  .headerImage {
+    height: clamp(120px, 18vw, 220px);
+  }
+}

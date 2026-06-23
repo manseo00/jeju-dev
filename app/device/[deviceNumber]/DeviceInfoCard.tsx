@@ -12,7 +12,7 @@ export default function DeviceInfoCard({
   registrationDate: string;
 }) {
   return (
-    <main className={styles.page}>
+    <div className={styles.page}>
       <div className={styles.card}>
         <div className={styles.titleRow}>
           <h1 className={styles.title}>디바이스 정보</h1>
@@ -44,6 +44,6 @@ export default function DeviceInfoCard({
           본 화면은 디바이스 등록 정보 조회 화면입니다.
         </p>
       </div>
-    </main>
+    </div>
   );
 }

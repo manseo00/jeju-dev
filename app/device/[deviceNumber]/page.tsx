@@ -18,13 +18,13 @@ export default async function DevicePage({ params }: PageProps) {
   // 1) 디바이스 번호 형식 검증 — 유효하지 않으면 안내 화면
   if (!isValidDeviceNumber(deviceNumber)) {
     return (
-      <main className={styles.page}>
+      <div className={styles.page}>
         <div className={styles.card}>
           <h1 className={styles.title}>유효하지 않은 디바이스 번호입니다.</h1>
           <p className={styles.lead}>QR 코드를 다시 확인해주세요.</p>
           <div className={styles.readonlyBox}>{deviceNumber}</div>
         </div>
-      </main>
+      </div>
     );
   }
 

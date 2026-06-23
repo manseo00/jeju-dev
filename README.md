@@ -152,7 +152,6 @@ app/
       page.tsx               # 레거시 호환: /device/[deviceNumber] -> /[deviceNumber] redirect
 components/
   SiteHeader.tsx   # 상단 배너
-  SiteFooter.tsx   # 하단 푸터
   site-layout.module.css
 lib/
   prisma.ts      # PrismaClient 싱글톤

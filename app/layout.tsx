@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import SiteHeader from '@/components/SiteHeader';
-import SiteFooter from '@/components/SiteFooter';
 import shell from '@/components/site-layout.module.css';
 
 export const metadata: Metadata = {
@@ -26,7 +25,6 @@ export default function RootLayout({
         <div className={shell.appShell}>
           <SiteHeader />
           <main className={shell.main}>{children}</main>
-          <SiteFooter />
         </div>
       </body>
     </html>

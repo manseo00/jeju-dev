@@ -1,4 +1,4 @@
-/* 전체 페이지 세로 골격: 헤더 - 콘텐츠 - 푸터 */
+/* 전체 페이지 세로 골격: 헤더 - 본문 */
 .appShell {
   display: flex;
   flex-direction: column;
@@ -8,7 +8,7 @@
   overflow-x: hidden;
 }
 
-/* 본문 영역: 남는 공간을 채워 푸터를 화면 하단으로 밀어준다 */
+/* 본문 영역: 남는 공간을 채워 화면을 가득 채운다 */
 .main {
   flex: 1;
   width: 100%;
@@ -46,40 +46,6 @@
     rgba(14, 43, 82, 0) 0%,
     rgba(14, 43, 82, 0.18) 100%
   );
-}
-
-/* 하단 푸터: 본문과 연결되는 짙은 네이비 */
-.footer {
-  flex-shrink: 0;
-  width: 100%;
-  background-color: #0e2b52;
-  background-image: linear-gradient(180deg, #123763 0%, #0c2549 100%);
-  box-shadow: 0 -6px 18px rgba(12, 37, 73, 0.18);
-  padding: 18px 16px;
-  padding-bottom: calc(18px + env(safe-area-inset-bottom));
-}
-
-.footerText {
-  margin: 0;
-  text-align: center;
-  font-size: 13px;
-  line-height: 1.7;
-  color: #cfe0f4;
-}
-
-.footerLine {
-  display: block;
-}
-
-/* 라벨(담당/개발·제작)은 살짝 흐리게 */
-.footerLabel {
-  color: #8fb0d6;
-}
-
-/* 기관/회사명은 더 선명하게 */
-.footerName {
-  color: #f1f7ff;
-  font-weight: 600;
 }
 
 /* PC 에서는 배너를 와이드 배너처럼 더 높게 */

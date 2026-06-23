@@ -45,7 +45,7 @@ export async function registerDevice(
   });
 
   if (existing) {
-    redirect(`/device/${deviceNumber}`);
+    redirect(`/${deviceNumber}`);
   }
 
   try {
@@ -61,11 +61,11 @@ export async function registerDevice(
     // unique 제약 충돌(동시 등록 등) 등은 중복으로 간주하고 정보 화면으로 이동
     const code = (err as { code?: string }).code;
     if (code === 'P2002') {
-      redirect(`/device/${deviceNumber}`);
+      redirect(`/${deviceNumber}`);
     }
     return { error: '등록 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.' };
   }
 
   // 등록 완료 후 정보 화면으로 이동
-  redirect(`/device/${deviceNumber}`);
+  redirect(`/${deviceNumber}`);
 }

@@ -1,4 +1,4 @@
-import styles from './device/[deviceNumber]/device.module.css';
+import styles from './[deviceNumber]/device.module.css';
 
 export default function HomePage() {
   return (

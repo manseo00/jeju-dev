@@ -1,10 +1,11 @@
 # QR 디바이스 등록 웹페이지
 
-QR 코드를 스캔하면 `/device/[deviceNumber]` 로 접속되어, 해당 디바이스 번호의
+QR 코드를 스캔하면 `/[deviceNumber]` 로 접속되어, 해당 디바이스 번호의
 등록 여부에 따라 **등록 화면** 또는 **디바이스 정보 화면**을 보여주는 웹 애플리케이션입니다.
 
-- QR URL 의 마지막 값이 곧 디바이스 번호입니다. (예: `/device/A7K29P0XQ1`)
+- QR URL 의 첫 번째 경로 값이 곧 디바이스 번호입니다. (예: `/A7K29P0XQ1`)
 - 디바이스 번호는 서버에서 자동 생성하지 않으며, URL 파라미터에서 가져옵니다.
+- 기존 `/device/[deviceNumber]` 주소로 접속하면 새 주소 `/[deviceNumber]` 로 자동 이동됩니다.
 
 ## 1. 기술 스택
 
@@ -66,7 +67,7 @@ npm run dev
 브라우저에서 다음 주소로 접속합니다.
 
 ```
-http://localhost:3000/device/A7K29P0XQ1
+http://localhost:3000/A7K29P0XQ1
 ```
 
 ### 동작
@@ -76,7 +77,7 @@ http://localhost:3000/device/A7K29P0XQ1
 - **등록 후**: 디바이스 정보 화면으로 이동합니다.
   (어촌계명 / 디바이스 번호 / 등록자 이름 / 등록일자 표시)
 - **같은 URL 재접속**: 등록 폼이 아니라 정보 화면이 표시됩니다.
-- **다른 디바이스 번호** (예: `http://localhost:3000/device/B8K39P1XR2`): 새 등록 화면이 표시됩니다.
+- **다른 디바이스 번호** (예: `http://localhost:3000/B8K39P1XR2`): 새 등록 화면이 표시됩니다.
 - **유효하지 않은 번호** (10자리 영대문자+숫자 규칙 위반): "유효하지 않은 디바이스 번호입니다." 안내 화면이 표시됩니다.
 
 ## 6. 디바이스 번호 규칙
@@ -117,7 +118,7 @@ Vercel 빌드 과정에서 Prisma Client 가 항상 생성됩니다.
 QR 코드에는 다음과 같은 전체 URL 을 인코딩합니다.
 
 ```
-https://<your-domain>.vercel.app/device/A7K29P0XQ1
+https://<your-domain>.vercel.app/A7K29P0XQ1
 ```
 
 `A7K29P0XQ1` 부분이 그대로 디바이스 번호가 됩니다.
@@ -138,15 +139,21 @@ https://<your-domain>.vercel.app/device/A7K29P0XQ1
 ```
 app/
   layout.tsx
-  page.tsx
+  page.tsx                   # 루트 안내 화면 (/)
   globals.css
+  [deviceNumber]/            # /[deviceNumber]
+    page.tsx                 # Server Component (등록 여부 조회)
+    DeviceRegisterForm.tsx   # 등록 폼 (Client)
+    DeviceInfoCard.tsx       # 정보 화면
+    actions.ts               # 등록 Server Action
+    device.module.css
   device/
     [deviceNumber]/
-      page.tsx               # Server Component (등록 여부 조회)
-      DeviceRegisterForm.tsx # 등록 폼 (Client)
-      DeviceInfoCard.tsx     # 정보 화면
-      actions.ts             # 등록 Server Action
-      device.module.css
+      page.tsx               # 레거시 호환: /device/[deviceNumber] -> /[deviceNumber] redirect
+components/
+  SiteHeader.tsx   # 상단 배너
+  SiteFooter.tsx   # 하단 푸터
+  site-layout.module.css
 lib/
   prisma.ts      # PrismaClient 싱글톤
   date.ts        # KST 날짜 처리
